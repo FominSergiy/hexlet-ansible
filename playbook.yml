@@ -1,0 +1,17 @@
+# add and remove git from vms -- both are Ubuntu
+# indentation matters
+
+- hosts: servers
+  tasks:
+    - name: install git
+      ansible.builtin.apt:
+        name: git
+        state: present
+        update_cache: yes
+      become: yes
+
+    - name: uninstall git
+      ansible.builtin.apt:
+        name: git
+        state: absent
+      become: yes
